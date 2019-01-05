@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>TimerException</AssemblyName>
-    <Name>ProgramCortexM7</Name>
+    <Name>ProgramCortexM7_SystemView</Name>
     <RootNamespace>TimerException</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
