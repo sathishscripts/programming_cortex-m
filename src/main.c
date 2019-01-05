@@ -36,6 +36,9 @@
 #include "conf_board.h"
 #include "conf_clock.h"
 
+#include "SEGGER_SYSVIEW_Conf.h"
+#include "SEGGER_SYSVIEW.h"
+
 #define STRING_EOL    "\r"
 #define STRING_HEADER "\r\n-- Programming ARM Cortex-M: Led Toggle --\r\n" \
 		"-- "BOARD_NAME" --\r\n" \
@@ -56,7 +59,9 @@ extern "C" {
  */
 void SysTick_Handler(void)
 {
+	SEGGER_SYSVIEW_RecordEnterISR();
 	g_ul_ms_ticks++;
+	SEGGER_SYSVIEW_RecordExitISR(); 
 }
 
 /**
@@ -107,6 +112,10 @@ int main(void)
 
 	/* Initialize the console uart */
 	configure_console();
+	
+	SEGGER_SYSVIEW_Conf();			/* Configure and initialize SystemView  */
+	//SEGGER_SYSVIEW_Start();         /* Starts SystemView recording*/
+	//SEGGER_SYSVIEW_OnIdle();		/* Tells SystemView that System is currently in "Idle"*/
 
 	/* Output example information */
 	puts(STRING_HEADER);
@@ -119,12 +128,12 @@ int main(void)
 		while (1);
 	}
 
-
 	while (1) {
 		/* Toggle LED state if active */
 		LED_Toggle(LED0);
 		
 		/* Wait for 500ms */
+		SEGGER_SYSVIEW_OnIdle();
 		mdelay(1000);
 	}
 }
