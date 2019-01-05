@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>TimerException</AssemblyName>
-    <Name>TimerException</Name>
+    <Name>ProgramCortexM7</Name>
     <RootNamespace>TimerException</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
@@ -441,6 +441,7 @@
       <Value>../src/ASF/sam/utils/preprocessor</Value>
       <Value>../src/ASF/thirdparty/CMSIS/Include</Value>
       <Value>../src/ASF/thirdparty/CMSIS/Lib/GCC</Value>
+      <Value>../src/ASF/thirdparty/SEGGER</Value>
       <Value>../src/ASF/sam/utils/fpu</Value>
       <Value>../src/ASF/common/utils</Value>
       <Value>../src/ASF/sam/utils/cmsis/same70/include</Value>
@@ -481,6 +482,7 @@
     </ListValues>
   </armgcc.linker.libraries.LibrarySearchPaths>
   <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
+  <armgcc.linker.memorysettings.ExternalRAM />
   <armgcc.linker.miscellaneous.LinkerFlags>-Wl,--entry=Reset_Handler -Wl,--cref -mthumb -T../src/ASF/sam/utils/linker_scripts/same70/same70q21/gcc/flash.ld</armgcc.linker.miscellaneous.LinkerFlags>
   <armgcc.assembler.general.IncludePaths>
     <ListValues>
@@ -604,6 +606,7 @@
     <Folder Include="src\ASF\thirdparty\CMSIS\Include\" />
     <Folder Include="src\ASF\thirdparty\CMSIS\Lib\" />
     <Folder Include="src\ASF\thirdparty\CMSIS\Lib\GCC\" />
+    <Folder Include="src\ASF\thirdparty\SEGGER" />
     <Folder Include="src\config\" />
   </ItemGroup>
   <ItemGroup>
@@ -1208,6 +1211,39 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\ASF\sam\utils\syscalls\gcc\syscalls.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\SEGGER\SEGGER.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\SEGGER\SEGGER_RTT.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\SEGGER\SEGGER_RTT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\SEGGER\SEGGER_SYSVIEW.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\SEGGER\SEGGER_SYSVIEW.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\SEGGER\SEGGER_SYSVIEW_ConfDefaults.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\ASF\thirdparty\SEGGER\SEGGER_SYSVIEW_Int.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\config\Global.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\config\SEGGER_RTT_Conf.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\config\SEGGER_SYSVIEW_Conf.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\config\SEGGER_SYSVIEW_Config_NoOS.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">
